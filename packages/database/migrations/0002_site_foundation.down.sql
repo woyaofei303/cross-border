@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS site_configs;
+DROP TABLE IF EXISTS site_domains;
+DROP TABLE IF EXISTS sites;
+DROP TABLE IF EXISTS brands;
+DROP TABLE IF EXISTS verticals;

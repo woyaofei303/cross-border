@@ -1,26 +1,40 @@
 {
-  "name": "cross-border-store",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "next": "16.2.6",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.2.6",
-    "tailwindcss": "^4",
-    "typescript": "^5"
-  }
+	"name": "cross-border-store",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "pnpm --filter @cross-border/storefront dev",
+		"dev:admin": "pnpm --filter @cross-border/admin dev",
+		"dev:api": "pnpm --filter @cross-border/api dev",
+		"db:dev:up": "docker compose up -d postgres",
+		"db:dev:down": "docker compose down",
+		"db:migrate": "pnpm --filter @cross-border/database db:migrate",
+		"db:rollback": "pnpm --filter @cross-border/database db:rollback",
+		"db:seed:demo": "node scripts/require-database-url.mjs && node scripts/seed-demo-commerce.mjs",
+		"db:status": "pnpm --filter @cross-border/database db:status",
+		"db:validate": "pnpm --filter @cross-border/database db:validate",
+		"e2e:commerce": "node scripts/require-database-url.mjs && pnpm db:migrate && pnpm test:integration",
+		"build": "pnpm -r --if-present build",
+		"start": "pnpm --filter @cross-border/storefront start",
+		"start:admin": "pnpm --filter @cross-border/admin start",
+		"start:api": "pnpm --filter @cross-border/api start",
+		"lint": "pnpm -r --if-present lint",
+		"test": "pnpm -r --if-present test",
+		"test:integration": "pnpm --filter @cross-border/api test:integration",
+		"typecheck": "pnpm -r --if-present typecheck"
+	},
+	"devDependencies": {
+		"@tailwindcss/postcss": "^4",
+		"@types/node": "^20",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"eslint": "^9",
+		"eslint-config-next": "16.2.6",
+		"next": "16.2.6",
+		"react": "19.2.4",
+		"react-dom": "19.2.4",
+		"tailwindcss": "^4",
+		"typescript": "^5",
+		"vitest": "^4.1.6"
+	}
 }

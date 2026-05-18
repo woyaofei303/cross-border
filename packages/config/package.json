@@ -1,0 +1,24 @@
+{
+	"name": "@cross-border/config",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./src/index.ts",
+	"exports": {
+		".": {
+			"types": "./src/index.ts",
+			"default": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"build": "tsc -p tsconfig.json",
+		"lint": "tsc -p tsconfig.json --noEmit",
+		"test": "vitest run --exclude \"dist/**\"",
+		"typecheck": "tsc -p tsconfig.json --noEmit"
+	},
+	"devDependencies": {
+		"typescript": "^5",
+		"vitest": "^4.1.6"
+	}
+}

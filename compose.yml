@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: cross-border-store-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-cross_border_store}
+      POSTGRES_USER: ${POSTGRES_USER:-cross_border}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cross_border_password}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${POSTGRES_USER:-cross_border} -d ${POSTGRES_DB:-cross_border_store}",
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+volumes:
+  postgres_data:

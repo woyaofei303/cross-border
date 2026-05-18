@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+	--background: #f7f3eb;
+	--foreground: #17221b;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background: var(--background);
+	color: var(--foreground);
+	font-family:
+		Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+		"Segoe UI", sans-serif;
+}
+
+button,
+a,
+select {
+	transition:
+		color 180ms ease,
+		background-color 180ms ease,
+		border-color 180ms ease,
+		transform 180ms ease,
+		box-shadow 180ms ease;
+}
+
+button:focus-visible,
+a:focus-visible,
+select:focus-visible {
+	outline: 3px solid rgba(29, 112, 83, 0.3);
+	outline-offset: 3px;
+}

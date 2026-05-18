@@ -1,0 +1,34 @@
+{
+	"name": "@cross-border/database",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./src/index.ts",
+	"exports": {
+		".": {
+			"types": "./src/index.ts",
+			"default": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"build": "tsc -p tsconfig.json",
+		"db:migrate": "tsx src/cli.ts up",
+		"db:rollback": "tsx src/cli.ts down --steps=1",
+		"db:status": "tsx src/cli.ts status",
+		"db:validate": "tsx src/cli.ts validate",
+		"lint": "tsc -p tsconfig.json --noEmit",
+		"test": "vitest run --exclude \"dist/**\"",
+		"typecheck": "tsc -p tsconfig.json --noEmit"
+	},
+	"dependencies": {
+		"@cross-border/shared": "workspace:*",
+		"pg": "^8.20.0"
+	},
+	"devDependencies": {
+		"@types/pg": "^8.20.0",
+		"tsx": "^4.22.0",
+		"typescript": "^5",
+		"vitest": "^4.1.6"
+	}
+}
